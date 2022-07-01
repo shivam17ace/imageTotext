@@ -51,7 +51,7 @@ import { useEffect, useState } from "react";
 import { createWorker } from "tesseract.js";
 import "./App.css";
 function App() {
-  const [ocr, setOcr] = useState("");
+  const [data, setData] = useState("");
   const [imageData, setImageData] = useState(null);
   const worker = createWorker({
     logger: (m) => {
@@ -66,7 +66,7 @@ function App() {
     const {
       data: { text },
     } = await worker.recognize(imageData);
-    setOcr(text);
+    setData(text);
   };
 
   useEffect(() => {
@@ -98,7 +98,7 @@ function App() {
       </div>
       <div className="display-flex">
         <img src={imageData} alt="" srcset="" />
-        <p>{ocr}</p>
+        <p>{data}</p>
       </div>
     </div>
   );
